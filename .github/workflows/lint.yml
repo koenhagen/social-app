@@ -47,5 +47,9 @@ jobs:
       - name: Check & compile i18n
         run: yarn intl:build
       - name: Run tests
-        run: |
-          NODE_ENV=test EXPO_PUBLIC_ENV=test yarn test --forceExit
+        uses: koenhagen/measure-energy-action@v0.33
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            NODE_ENV=test EXPO_PUBLIC_ENV=test yarn test --forceExit
+          count: 1
